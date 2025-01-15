@@ -67,84 +67,21 @@ class RolePermissionSeeder extends Seeder
                     'master.data.view',
                 ]
             ],
+
             [
-                'group_name' => 'barang.jasa',
+                'group_name' => 'cabang',
                 'permissions' => [
-                    'barang.jasa.create',
-                    'barang.jasa.view',
-                    'barang.jasa.edit',
-                    'barang.jasa.delete',
+                    'cabang.view',
+                    'cabang.create',
+                    'cabang.edit',
+                    'cabang.delete',
                 ]
             ],
-            
-            [
-                'group_name' => 'merk',
-                'permissions' => [
-                    'merk.create',
-                    'merk.view',
-                    'merk.edit',
-                    'merk.delete',
-                ]
-            ],
-            [
-                'group_name' => 'satuan',
-                'permissions' => [
-                    'satuan.create',
-                    'satuan.view',
-                    'satuan.edit',
-                    'satuan.delete',
-                ]
-            ],
-            [
-                'group_name' => 'customer',
-                'permissions' => [
-                    'customer.create',
-                    'customer.view',
-                    'customer.edit',
-                    'customer.delete',
-                ]
-            ],
-            [
-                'group_name' => 'pph',
-                'permissions' => [
-                    'pph.create',
-                    'pph.view',
-                    'pph.edit',
-                    'pph.delete',
-                ]
-            ],
-            [
-                'group_name' => 'transaksi',
-                'permissions' => [
-                    'transaksi.create',
-                    'transaksi.view',
-                    'transaksi.edit',
-                    'transaksi.delete',
-                    'transaksi.invoice',
-                    'transaksi.rekap',
-                    'transaksi.update.status',
-                ]
-            ],
-            [
-                'group_name' => 'laporan',
-                'permissions' => [
-                    'laporan.view',
-                ]
-            ],
+           
             
         ];
 
 
-        // Create and Assign Permissions
-        // for ($i = 0; $i < count($permissions); $i++) {
-        //     $permissionGroup = $permissions[$i]['group_name'];
-        //     for ($j = 0; $j < count($permissions[$i]['permissions']); $j++) {
-        //         // Create Permission
-        //         $permission = Permission::create(['name' => $permissions[$i]['permissions'][$j], 'group_name' => $permissionGroup]);
-        //         $roleSuperAdmin->givePermissionTo($permission);
-        //         $permission->assignRole($roleSuperAdmin);
-        //     }
-        // }
 
         // Do same for the admin guard for tutorial purposes.
         $admin = Admin::where('username', 'superadmin')->first();

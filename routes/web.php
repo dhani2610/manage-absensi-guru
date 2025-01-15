@@ -34,15 +34,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('users', 'Backend\UsersController', ['names' => 'admin.users']);
     Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
 
-
-    Route::group(['prefix' => 'spip'], function () {
-        Route::get('/', 'Backend\SpipController@index')->name('spip');
-        Route::get('send-reminder/{id}', 'Backend\SpipController@sendEmail')->name('spip.mail.reminder');
-        Route::get('create', 'Backend\SpipController@create')->name('spip.create');
-        Route::post('store', 'Backend\SpipController@store')->name('spip.store');
-        Route::get('edit/{id}', 'Backend\SpipController@edit')->name('spip.edit');
-        Route::post('update/{id}', 'Backend\SpipController@update')->name('spip.update');
-        Route::get('destroy/{id}', 'Backend\SpipController@destroy')->name('spip.destroy');
+    Route::group(['prefix' => 'cabang'], function () {
+        Route::get('/', 'Backend\CabangController@index')->name('cabang');
+        Route::get('create', 'Backend\CabangController@create')->name('cabang.create');
+        Route::post('store', 'Backend\CabangController@store')->name('cabang.store');
+        Route::get('edit/{id}', 'Backend\CabangController@edit')->name('cabang.edit');
+        Route::post('update/{id}', 'Backend\CabangController@update')->name('cabang.update');
+        Route::get('destroy/{id}', 'Backend\CabangController@destroy')->name('cabang.destroy');
     });
 
     // Login Routes

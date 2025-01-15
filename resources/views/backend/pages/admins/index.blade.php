@@ -25,7 +25,7 @@
                     <p class="float-right mb-2">
                         @if (Auth::guard('admin')->user()->can('admin.edit'))
                             {{-- <a class="btn btn-primary text-white" style="float: right" href="{{ route('admin.admins.create') }}" data-bs-toggle="modal" data-bs-target="#exampleModal"> --}}
-                            <a class="btn btn-primary text-white" style="float: right" data-bs-toggle="modal" data-bs-target="#modalCreate">
+                            <a class="btn btn-primary text-white mb-2" style="float: right" data-bs-toggle="modal" data-bs-target="#modalCreate">
                                 Create</a>
                             
                             <!-- Modal -->
@@ -176,7 +176,7 @@
                                         @if (Auth::guard('admin')->user()->can('admin.delete'))
                                         <a class="btn btn-danger text-white" href="{{ route('admin.admins.destroy', $admin->id) }}"
                                         onclick="event.preventDefault(); document.getElementById('delete-form-{{ $admin->id }}').submit();">
-                                        <i class="fa fa-trash-o"></i>
+                                        <i class="fa fa-trash"></i>
                                         </a>
                                         <form id="delete-form-{{ $admin->id }}" action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST" style="display: none;">
                                             @method('DELETE')

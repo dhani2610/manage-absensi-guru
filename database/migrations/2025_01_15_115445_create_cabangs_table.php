@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('foto_deviasis', function (Blueprint $table) {
+        Schema::create('cabangs', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_spip');
-            $table->string('foto');
+            $table->string('cabang');
+            $table->longText('deskripsi');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('foto_deviasis');
+        Schema::dropIfExists('cabangs');
     }
 };

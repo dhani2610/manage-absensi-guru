@@ -99,8 +99,6 @@
 
                             <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-                                <a href="{{ url('admin/register') }}" class="btn btn-primary d-grid w-100 mt-2"
-                                    type="submit">Register</a>
                             </div>
                         </form>
 

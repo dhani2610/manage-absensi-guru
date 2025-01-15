@@ -63,22 +63,14 @@ class LoginController extends Controller
             $userRole = Auth::guard('admin')->user()->getRoleNames()->first(); // Get the first role name
 
             session()->flash('success', 'Successully Logged in !');
-            if ($userRole == 'superadmin') {
-                return redirect()->route('spip', ['type' => 'Sarana']);
-            } else {
-                return redirect()->route('spip', ['type' => 'Sarana']);
-            }
+            return redirect()->route('admin.dashboard');
         } else {
             // Search using username
             if (Auth::guard('admin')->attempt(['username' => $request->email, 'password' => $request->password], $request->remember)) {
                 $userRole = Auth::guard('admin')->user()->getRoleNames()->first(); // Get the first role name
 
                 session()->flash('success', 'Successully Logged in !');
-                if ($userRole == 'superadmin') {
-                    return redirect()->route('spip', ['type' => 'Sarana']);
-                } else {
-                    return redirect()->route('spip', ['type' => 'Sarana']);
-                }
+                return redirect()->route('admin.dashboard');
             }
             // error
             session()->flash('error', 'Invalid email and password');
