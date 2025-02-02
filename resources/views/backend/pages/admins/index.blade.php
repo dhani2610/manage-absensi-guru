@@ -41,41 +41,29 @@
                                             @csrf
                                             <div class="form-row">
                                                 <div class="form-group col-md-12 col-sm-12">
-                                                    <label for="name">Name</label>
+                                                    <label class="mt-2" for="name">Name</label>
                                                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                                                 </div>
                                                 <div class="form-group col-md-12 col-sm-12">
-                                                    <label for="email">Email</label>
+                                                    <label class="mt-2" for="email">Email</label>
                                                     <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
                                                 </div>
                                             </div>
                     
                                             <div class="form-row">
                                                 <div class="form-group col-md-12 col-sm-12">
-                                                    <label for="password">Password</label>
+                                                    <label class="mt-2" for="password">Password</label>
                                                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                                                 </div>
                                                 <div class="form-group col-md-12 col-sm-12">
-                                                    <label for="password_confirmation">Confirm Password</label>
+                                                    <label class="mt-2" for="password_confirmation">Confirm Password</label>
                                                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Enter Password">
                                                 </div>
                                             </div>
                     
                                             <div class="form-row">
-                                                <div class="form-group col-md-12 col-sm-6">
-                                                    <label for="password">Cabang</label>
-                                                    <select name="id_cabang" id="cabang" class="form-control">
-                                                        <option value="" disabled selected>Pilih Cabang</option>
-                                                        @foreach ($cabang as $cb)
-                                                            <option value="{{ $cb->id }}"  >{{ $cb->cabang }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
                                                 <div class="form-group col-md-12 col-sm-12">
-                                                    <label for="password">Assign Roles</label>
+                                                    <label class="mt-2" for="password">Assign Roles</label>
                                                     <select name="roles[]" id="roles" class="form-control"  required>
                                                         @foreach ($roles as $role)
                                                             <option value="{{ $role->name }}">{{ $role->name }}</option>
@@ -83,7 +71,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-12 col-sm-12">
-                                                    <label for="username">Username</label>
+                                                    <label class="mt-2" for="username">Username</label>
                                                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
                                                 </div>
                                             </div>
@@ -106,7 +94,6 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Roles</th>
-                                    <th>Cabang</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -123,7 +110,6 @@
                                             </span>
                                         @endforeach
                                     </td>
-                                    <td>{{ $admin->cabang->cabang ?? '-' }}</td>
                                     <td>
                                         @if (Auth::guard('admin')->user()->can('admin.edit'))
                                             <a class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#modalEdit{{ $admin->id }}" href="#">
@@ -144,48 +130,35 @@
                                                             @csrf
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-12 col-sm-12">
-                                                                    <label for="name">Name</label>
+                                                                    <label class="mt-2" for="name">Name</label>
                                                                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ $admin->name }}">
                                                                 </div>
                                                                 <div class="form-group col-md-12 col-sm-12">
-                                                                    <label for="email">Email</label>
+                                                                    <label class="mt-2" for="email">Email</label>
                                                                     <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{ $admin->email }}">
                                                                 </div>
                                                             </div>
                                     
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-12 col-sm-12">
-                                                                    <label for="password">Password</label>
+                                                                    <label class="mt-2" for="password">Password</label>
                                                                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                                                                 </div>
                                                                 <div class="form-group col-md-12 col-sm-12">
-                                                                    <label for="password_confirmation">Confirm Password</label>
+                                                                    <label class="mt-2" for="password_confirmation">Confirm Password</label>
                                                                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Enter Password">
                                                                 </div>
                                                             </div>
-                                    
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-12 col-sm-6">
-                                                                    <label for="password">Cabang</label>
-                                                                    <select name="id_cabang" id="cabang" class="form-control">
-                                                                        <option value="" disabled selected>Pilih Cabang</option>
-                                                                        @foreach ($cabang as $cb)
-                                                                            <option value="{{ $cb->id }}" {{ $admin->id_cabang == $cb->id ? 'selected' : '' }} >{{ $cb->cabang }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-12 col-sm-6">
-                                                                    <label for="username">Username</label>
+                                                                    <label class="mt-2" for="username">Username</label>
                                                                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required value="{{ $admin->username }}">
                                                                 </div>
                                                             </div>
                                     
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-12 col-sm-6">
-                                                                    <label for="password">Assign Roles</label>
+                                                                    <label class="mt-2" for="password">Assign Roles</label>
                                                                     <select name="roles[]" id="roles" class="form-control">
                                                                         @foreach ($roles as $role)
                                                                             <option value="{{ $role->name }}" {{ $admin->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
@@ -193,7 +166,7 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group col-md-12 col-sm-6">
-                                                                    <label for="username">Username</label>
+                                                                    <label class="mt-2" for="username">Username</label>
                                                                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required value="{{ $admin->username }}">
                                                                 </div>
                                                             </div>

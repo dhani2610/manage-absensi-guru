@@ -19,8 +19,8 @@
             {{-- <span class="app-brand-logo demo">
 
       </span> --}}
-            <img src="{{ asset('assets/img/logos/logo.png') }}" style="max-width: 40%">
-            <span class=" demo fw-bold ms-2" style="color: white">Dashboard</span>
+            <img src="{{ asset('assets/img/logos/logo.png') }}" style="max-width: 30%">
+            <span class=" demo fw-bold ms-2" style="color: black">Dashboard</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -48,15 +48,46 @@
             </a>
         </li>
         @endif
-        @if ($usr->can('cabang.view'))
+        @if ($usr->can('kelas.view'))
         <li class="menu-item mb-2">
-            <a href="{{ route('cabang') }}" class="menu-link">
+            <a href="{{ route('kelas') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Dashboard">Cabang</div>
+                <div data-i18n="Kelas">Kelas</div>
             </a>
         </li>
         @endif
-
+        @if ($usr->can('siswa.view'))
+        <li class="menu-item mb-2">
+            <a href="{{ route('siswa') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Siswa">Siswa</div>
+            </a>
+        </li>
+        @endif
+        @if ($usr->can('guru.view'))
+        <li class="menu-item mb-2">
+            <a href="{{ route('guru') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Guru">Guru</div>
+            </a>
+        </li>
+        @endif
+        @if ($usr->can('mata.pelajaran.view'))
+        <li class="menu-item mb-2">
+            <a href="{{ route('mata.pelajaran') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Mata Pelajaran">Mata Pelajaran</div>
+            </a>
+        </li>
+        @endif
+        @if ($usr->can('jadwal.view'))
+        <li class="menu-item mb-2">
+            <a href="{{ route('jadwal') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Jadwal">Jadwal</div>
+            </a>
+        </li>
+        @endif
 
         @if ($usr->can('admin.view') || $usr->can('role.view'))
             <li

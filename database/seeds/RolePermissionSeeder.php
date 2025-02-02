@@ -69,19 +69,54 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'cabang',
+                'group_name' => 'kelas',
                 'permissions' => [
-                    'cabang.view',
-                    'cabang.create',
-                    'cabang.edit',
-                    'cabang.delete',
+                    'kelas.view',
+                    'kelas.create',
+                    'kelas.edit',
+                    'kelas.delete',
                 ]
             ],
            
-            
+            [
+                'group_name' => 'siswa',
+                'permissions' => [
+                    'siswa.view',
+                    'siswa.create',
+                    'siswa.edit',
+                    'siswa.delete',
+                ]
+            ],
+           
+            [
+                'group_name' => 'guru',
+                'permissions' => [
+                    'guru.view',
+                    'guru.create',
+                    'guru.edit',
+                    'guru.delete',
+                ]
+            ],
+            [
+                'group_name' => 'mata pelajaran',
+                'permissions' => [
+                    'mata.pelajaran.view',
+                    'mata.pelajaran.create',
+                    'mata.pelajaran.edit',
+                    'mata.pelajaran.delete',
+                ]
+            ],
+            [
+                'group_name' => 'jadwal',
+                'permissions' => [
+                    'jadwal.all.data',
+                    'jadwal.view',
+                    'jadwal.create',
+                    'jadwal.edit',
+                    'jadwal.delete',
+                ]
+            ],
         ];
-
-
 
         // Do same for the admin guard for tutorial purposes.
         $admin = Admin::where('username', 'superadmin')->first();

@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cabang extends Model
+class Siswa extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function kelas()
     {
-        return $this->hasMany(Admin::class,'id_cabang');
+        return $this->belongsTo(Kelas::class, 'id_kelas');
     }
 }

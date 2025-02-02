@@ -21,7 +21,7 @@
 
     <div class="main-content-inner">
         <div class="row">
-            <form action="{{ route('cabang.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('mata.pelajaran.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-6 mt-5">
                     <div class="card">
@@ -31,14 +31,31 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group col-md-12">
-                                        <label class="mt-2" for="jenis">Cabang</label>
-                                        <input type="text" class="form-control" id="cabang" name="cabang" required>
+                                        <label class="mt-2" for="jenis">Kode Mata Pelajaran</label>
+                                        <input type="text" class="form-control" name="kode_mapel" required placeholder="Kode Mata Pelajaran..">
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label class="mt-2" for="deskripsi">Deskripsi</label>
-                                        <textarea class="form-control" id="merek" name="deskripsi" required cols="30" rows="10"></textarea>
+                                        <label class="mt-2" for="jenis">Nama Mata Pelajaran</label>
+                                        <input type="text" class="form-control" name="nama_mapel" required placeholder="Nama Mata Pelajaran..">
                                     </div>
-                                    
+                                    <div class="form-group col-md-12">
+                                        <label class="mt-2" for="jenis">Kelas</label>
+                                        <select name="id_kelas" class="form-control" id="" required>
+                                            <option value="" selected disabled>Pilih Kelas</option>
+                                            @foreach ($kelas as $item)
+                                                <option value="{{ $item->id }}">Kelas {{ $item->nama_kelas }} {{ $item->jenis_kelas }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="mt-2" for="jenis">Guru</label>
+                                        <select name="id_guru" class="form-control" id="" required>
+                                            <option value="" selected disabled>Pilih Guru</option>
+                                            @foreach ($guru as $g)
+                                                <option value="{{ $g->id }}">{{ $g->nama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 

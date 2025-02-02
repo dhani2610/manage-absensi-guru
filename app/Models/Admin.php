@@ -46,12 +46,6 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cabang()
-    {
-        return $this->belongsTo(Cabang::class,'id_cabang');
-    }
-
-
     public static function getpermissionGroups()
     {
         $permission_groups = DB::table('permissions')
@@ -80,5 +74,11 @@ class Admin extends Authenticatable
             }
         }
         return $hasPermission;
+    }
+
+
+    public function guru()
+    {
+        return $this->hasMany(Guru::class, 'id_user');
     }
 }

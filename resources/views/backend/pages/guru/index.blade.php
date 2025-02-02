@@ -24,10 +24,10 @@
             <div class="col-12 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title float-left">Data Cabang</h4>
-                        @if ($usr->can('cabang.create'))
+                        <h4 class="header-title float-left">Data {{ $page_title }}</h4>
+                        @if ($usr->can('guru.create'))
                             <p class="float-right mb-2">
-                                <a href="{{ route('cabang.create') }}" class="btn btn-primary text-white mb-3">
+                                <a href="{{ route('guru.create') }}" class="btn btn-primary text-white mb-3">
                                     Tambah Data
                                 </a>
                             </p>
@@ -39,9 +39,11 @@
                             <table id="dataTable" class="table text-center">
                                 <thead class="bg-light text-capitalize">
                                     <tr>
-                                        <th>NO</th>
-                                        <th>Cabang</th>
-                                        <th>Deskripsi</th>
+                                        <th>No</th>
+                                        <th>Kode Guru</th>
+                                        <th>Nama</th>
+                                        <th>NIDN</th>
+                                        <th>Email</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -49,17 +51,19 @@
                                     @foreach ($data as $index => $item)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $item->cabang }}</td>
-                                            <td>{{ $item->deskripsi }}</td>
+                                            <td>{{ $item->kode_guru }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->nidn }}</td>
+                                            <td>{{ $item->user->email ?? '-' }}</td>
                                             <td>
-                                                @if ($usr->can('cabang.edit'))
-                                                    <a href="{{ route('cabang.edit', $item->id) }}"
+                                                @if ($usr->can('guru.edit'))
+                                                    <a href="{{ route('guru.edit', $item->id) }}"
                                                         class="btn btn-success text-white">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 @endif
-                                                @if ($usr->can('cabang.delete'))
-                                                    <a onclick="confirmDelete('{{ route('cabang.destroy', $item->id) }}')"
+                                                @if ($usr->can('guru.delete'))
+                                                    <a onclick="confirmDelete('{{ route('guru.destroy', $item->id) }}')"
                                                         class="btn btn-danger text-white">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </a>

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Cabang;
+use App\Models\Kelas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CabangController extends Controller
+class KelasController extends Controller
 {
 
     public $user;
@@ -24,11 +24,10 @@ class CabangController extends Controller
      */
     public function index()
     {
-        $data['page_title'] = 'Cabang';
+        $data['page_title'] = 'Kelas';
+        $data['data'] = Kelas::orderBy('nama_kelas', 'desc')->get();
 
-        $data['data'] = Cabang::orderBy('created_at', 'desc')->get();
-
-        return view('backend.pages.cabang.index', $data);
+        return view('backend.pages.kelas.index', $data);
     }
 
     /**
@@ -36,8 +35,9 @@ class CabangController extends Controller
      */
     public function create()
     {
-        $data['page_title'] = 'Tambah Data Cabang';
-        return view('backend.pages.cabang.create', $data);
+        $data['page_title'] = 'Tambah Kelas';
+
+        return view('backend.pages.kelas.create', $data);
     }
 
     /**
@@ -46,24 +46,28 @@ class CabangController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = new Cabang();
-            $data->cabang = $request->cabang;
-            $data->deskripsi = $request->deskripsi;
+            $checkKelas = Kelas::where('nama_kelas',$request->nama_kelas)->where('jenis_kelas',$request->jenis_kelas)->first();
+            if ($checkKelas != null) {
+                session()->flash('failed', 'Kelas tersebut sudah tersedia!');
+                return redirect()->route('kelas');
+            }
+            $data = new Kelas();
+            $data->nama_kelas = $request->nama_kelas;
+            $data->jenis_kelas = $request->jenis_kelas;
             $data->save();
 
             session()->flash('success', 'Data Berhasil Disimpan!');
-            return redirect()->route('cabang');
+            return redirect()->route('kelas');
         } catch (\Throwable $th) {
-
             session()->flash('failed', $th->getMessage());
-            return redirect()->route('cabang');
+            return redirect()->route('kelas');
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Cabang $cabang)
+    public function show(Kelas $kelas)
     {
         //
     }
@@ -73,10 +77,10 @@ class CabangController extends Controller
      */
     public function edit($id)
     {
-        $data['page_title'] = 'Tambah Data Cabang';
-        $data['cabang'] = Cabang::find($id);
+        $data['page_title'] = 'Edit Kelas';
+        $data['data'] = Kelas::find($id);
 
-        return view('backend.pages.cabang.edit', $data);
+        return view('backend.pages.kelas.edit', $data);
     }
 
     /**
@@ -85,17 +89,22 @@ class CabangController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $data = Cabang::find($id);
-            $data->cabang = $request->cabang;
-            $data->deskripsi = $request->deskripsi;
+            $checkKelas = Kelas::whereNotIn('id',[$id])->where('nama_kelas',$request->nama_kelas)->where('jenis_kelas',$request->jenis_kelas)->first();
+            if ($checkKelas != null) {
+                session()->flash('failed', 'Kelas tersebut sudah tersedia!');
+                return redirect()->route('kelas');
+            }
+
+            $data = Kelas::find($id);
+            $data->nama_kelas = $request->nama_kelas;
+            $data->jenis_kelas = $request->jenis_kelas;
             $data->save();
 
             session()->flash('success', 'Data Berhasil Disimpan!');
-            return redirect()->route('cabang');
+            return redirect()->route('kelas');
         } catch (\Throwable $th) {
-
             session()->flash('failed', $th->getMessage());
-            return redirect()->route('cabang');
+            return redirect()->route('kelas');
         }
     }
 
@@ -105,15 +114,14 @@ class CabangController extends Controller
     public function destroy($id)
     {
         try {
-            $data = Cabang::find($id);
+            $data = Kelas::find($id);
             $data->delete();
 
             session()->flash('success', 'Data Berhasil Dihapus!');
-            return redirect()->route('cabang');
+            return redirect()->route('kelas');
         } catch (\Throwable $th) {
-
             session()->flash('failed', $th->getMessage());
-            return redirect()->route('cabang');
+            return redirect()->route('kelas');
         }
     }
 }

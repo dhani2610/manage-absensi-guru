@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->integer('id_cabang')->nullable();
+        Schema::create('siswas', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->string('nisn');
+            $table->integer('id_kelas');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->dropColumn('id_cabang');
-        });
+        Schema::dropIfExists('siswas');
     }
 };
