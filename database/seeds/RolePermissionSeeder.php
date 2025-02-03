@@ -123,6 +123,12 @@ class RolePermissionSeeder extends Seeder
                     'absensi.all.data',
                 ]
             ],
+            [
+                'group_name' => 'profile',
+                'permissions' => [
+                    'profile.view',
+                ]
+            ],
         ];
 
         // Do same for the admin guard for tutorial purposes.

@@ -8,12 +8,19 @@
     @include('backend.layouts-new.partials.head')
     <style>
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 0em!important;
+            padding: 0em !important;
         }
     </style>
 </head>
 
 <body>
+    @php
+        $usr = Auth::guard('admin')->user();
+        if ($usr != null) {
+            $userRole = Auth::guard('admin')->user()->getRoleNames()->first(); // Get the first role name
+        }
+
+    @endphp
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">

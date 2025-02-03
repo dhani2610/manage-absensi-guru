@@ -89,5 +89,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', 'Backend\AbsensiController@index')->name('absensi');
         Route::get('/store', 'Backend\AbsensiController@store')->name('absensi.store');
     });
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', 'Backend\ProfileController@index')->name('profile');
+        Route::post('/profile/update', 'Backend\ProfileController@update')->name('profile.update');
+        Route::get('/change-password', 'Backend\ProfileController@changePassword')->name('profile.change-password');
+        Route::post('/proses-change-password', 'Backend\ProfileController@changePasswordProses')->name('profile.proses-change-password');
+    });
 
 });

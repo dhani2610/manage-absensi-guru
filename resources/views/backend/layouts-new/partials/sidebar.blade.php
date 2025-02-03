@@ -27,13 +27,7 @@
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
     </div>
-    @php
-        $usr = Auth::guard('admin')->user();
-        if ($usr != null) {
-            $userRole = Auth::guard('admin')->user()->getRoleNames()->first(); // Get the first role name
-        }
-
-    @endphp
+   
 
     <div class="menu-inner-shadow" style="background: #3da601!Important"></div>
 

@@ -24,7 +24,13 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown ">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{ asset('assets/img/logos/logo.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                        @if ($usr->foto == null)
+                            <img src="{{ asset('assets/img/logos/logo.png') }}" alt
+                                class="w-px-40 h-auto rounded-circle" />
+                        @else
+                            <img src="{{ asset('assets/img/foto_user/' . $usr->foto) }}" alt
+                                class="w-px-40 h-auto rounded-circle" />
+                        @endif
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -34,8 +40,13 @@
 
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ asset('assets/img/logos/logo.png') }}" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                        @if ($usr->foto == null)
+                                            <img src="{{ asset('assets/img/logos/logo.png') }}" alt
+                                                class="w-px-40 h-auto rounded-circle" />
+                                        @else
+                                            <img src="{{ asset('assets/img/foto_user/' . $usr->foto) }}" alt
+                                                class="w-px-40 h-auto rounded-circle" />
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
@@ -47,35 +58,44 @@
                                     @else
                                         <span class="fw-medium d-block">Quest</span>
                                     @endif
-                                    {{-- <small class="text-muted">Admin</small> --}}
+
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        @if ($usr != null)
-                            <form id="admin-logout-form" action="{{ route('admin.logout.submit') }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                            </form>
+                    @if ($usr->can('profile.view'))
+                        <li>
+                            <a class="dropdown-item" href="{{ route('profile') }}">
+                                <i class="bx bx-user me-2"></i>
+                                <span class="align-middle">My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                    @endif
 
-                            <a class="dropdown-item" href="javascript:void(0);"
-                                onclick="event.preventDefault();
+                    @if ($usr != null)
+                        <form id="admin-logout-form" action="{{ route('admin.logout.submit') }}" method="POST"
+                            style="display: none;">
+                            @csrf
+                        </form>
+
+                        <a class="dropdown-item" href="javascript:void(0);"
+                            onclick="event.preventDefault();
                         document.getElementById('admin-logout-form').submit();">
-                                <i class="bx bx-power-off me-2"></i>
-                                <span class="align-middle">Log Out</span>
-                            </a>
-                        @else
-                            <a class="dropdown-item" href="{{ url('admin/login') }}">
-                                <i class="bx bx-power-off me-2"></i>
-                                <span class="align-middle">Login</span>
-                            </a>
-                        @endif
+                            <i class="bx bx-power-off me-2"></i>
+                            <span class="align-middle">Log Out</span>
+                        </a>
+                    @else
+                        <a class="dropdown-item" href="{{ url('admin/login') }}">
+                            <i class="bx bx-power-off me-2"></i>
+                            <span class="align-middle">Login</span>
+                        </a>
+                    @endif
 
-                    </li>
-                </ul>
             </li>
-            <!--/ User -->
+        </ul>
+        </li>
+        <!--/ User -->
         </ul>
     </div>
 </nav>
@@ -96,7 +116,7 @@
                 // Looping setiap course untuk menyaring hasil berdasarkan pencarian
                 $('.course-item').each(function() {
                     var title = $(this).find('.course-title').text()
-                .toLowerCase(); // Ambil judul kursus dan convert ke lowercase
+                        .toLowerCase(); // Ambil judul kursus dan convert ke lowercase
 
                     // Jika judul mengandung query, tampilkan materi, jika tidak sembunyikan
                     if (title.includes(query)) {
