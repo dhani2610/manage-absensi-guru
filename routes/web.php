@@ -85,4 +85,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('destroy/{id}', 'Backend\JadwalController@destroy')->name('jadwal.destroy');
     });
 
+    Route::group(['prefix' => 'absensi'], function () {
+        Route::get('/', 'Backend\AbsensiController@index')->name('absensi');
+        Route::get('/store', 'Backend\AbsensiController@store')->name('absensi.store');
+    });
+
 });

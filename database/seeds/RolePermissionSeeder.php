@@ -116,6 +116,13 @@ class RolePermissionSeeder extends Seeder
                     'jadwal.delete',
                 ]
             ],
+            [
+                'group_name' => 'absensi',
+                'permissions' => [
+                    'absensi.view',
+                    'absensi.all.data',
+                ]
+            ],
         ];
 
         // Do same for the admin guard for tutorial purposes.

@@ -48,10 +48,18 @@
             </a>
         </li>
         @endif
+        @if ($usr->can('absensi.view'))
+        <li class="menu-item mb-2">
+            <a href="{{ route('absensi') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-camera"></i>
+                <div data-i18n="Kelas">Absensi</div>
+            </a>
+        </li>
+        @endif
         @if ($usr->can('kelas.view'))
         <li class="menu-item mb-2">
             <a href="{{ route('kelas') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-building"></i>
                 <div data-i18n="Kelas">Kelas</div>
             </a>
         </li>
@@ -59,7 +67,7 @@
         @if ($usr->can('siswa.view'))
         <li class="menu-item mb-2">
             <a href="{{ route('siswa') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Siswa">Siswa</div>
             </a>
         </li>
@@ -67,7 +75,7 @@
         @if ($usr->can('guru.view'))
         <li class="menu-item mb-2">
             <a href="{{ route('guru') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Guru">Guru</div>
             </a>
         </li>
@@ -75,7 +83,7 @@
         @if ($usr->can('mata.pelajaran.view'))
         <li class="menu-item mb-2">
             <a href="{{ route('mata.pelajaran') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-book"></i>
                 <div data-i18n="Mata Pelajaran">Mata Pelajaran</div>
             </a>
         </li>
@@ -83,7 +91,7 @@
         @if ($usr->can('jadwal.view'))
         <li class="menu-item mb-2">
             <a href="{{ route('jadwal') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
                 <div data-i18n="Jadwal">Jadwal</div>
             </a>
         </li>

@@ -81,4 +81,8 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Guru::class, 'id_user');
     }
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class, 'id_user');
+    }
 }
