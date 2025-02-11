@@ -85,6 +85,24 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('destroy/{id}', 'Backend\JadwalController@destroy')->name('jadwal.destroy');
     });
 
+    Route::group(['prefix' => 'catatan'], function () {
+        Route::get('/', 'Backend\CatatanController@index')->name('catatan');
+        Route::get('create', 'Backend\CatatanController@create')->name('catatan.create');
+        Route::post('store', 'Backend\CatatanController@store')->name('catatan.store');
+        Route::get('edit/{id}', 'Backend\CatatanController@edit')->name('catatan.edit');
+        Route::post('update/{id}', 'Backend\CatatanController@update')->name('catatan.update');
+        Route::get('destroy/{id}', 'Backend\CatatanController@destroy')->name('catatan.destroy');
+    });
+
+    Route::group(['prefix' => 'nilai-siswa'], function () {
+        Route::get('/', 'Backend\NilaiSiswaController@index')->name('nilai.siswa');
+        Route::get('create', 'Backend\NilaiSiswaController@create')->name('nilai.siswa.create');
+        Route::post('store', 'Backend\NilaiSiswaController@store')->name('nilai.siswa.store');
+        Route::get('edit/{id}', 'Backend\NilaiSiswaController@edit')->name('nilai.siswa.edit');
+        Route::post('update/{id}', 'Backend\NilaiSiswaController@update')->name('nilai.siswa.update');
+        Route::get('destroy/{id}', 'Backend\NilaiSiswaController@destroy')->name('nilai.siswa.destroy');
+    });
+
     Route::group(['prefix' => 'absensi'], function () {
         Route::get('/', 'Backend\AbsensiController@index')->name('absensi');
         Route::get('/store', 'Backend\AbsensiController@store')->name('absensi.store');

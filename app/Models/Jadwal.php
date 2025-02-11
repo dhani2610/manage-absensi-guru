@@ -13,4 +13,9 @@ class Jadwal extends Model
     {
         return $this->belongsTo(MataPelajaran::class, 'id_mapel');
     }
+
+    public function catatan()
+    {
+        return $this->belongsTo(Catatan::class, 'id_mapel');
+    }
 }

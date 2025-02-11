@@ -76,6 +76,7 @@ class SiswaController extends Controller
     {
         $data['page_title'] = 'Edit Siswa';
         $data['data'] = Siswa::find($id);
+        $data['kelas'] = Kelas::orderBy('nama_kelas', 'desc')->get();
 
         return view('backend.pages.siswa.edit', $data);
     }

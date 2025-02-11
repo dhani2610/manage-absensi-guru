@@ -13,4 +13,8 @@ class Siswa extends Model
     {
         return $this->belongsTo(Kelas::class, 'id_kelas');
     }
+    public function catatanDetail()
+    {
+        return $this->hasMany(CatatanDetail::class, 'id_siswa');
+    }
 }

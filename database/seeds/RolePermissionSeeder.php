@@ -129,6 +129,26 @@ class RolePermissionSeeder extends Seeder
                     'profile.view',
                 ]
             ],
+            [
+                'group_name' => 'catatan',
+                'permissions' => [
+                    'catatan.all.data',
+                    'catatan.view',
+                    'catatan.create',
+                    'catatan.edit',
+                    'catatan.delete',
+                ]
+            ],
+            [
+                'group_name' => 'nilai.siswa',
+                'permissions' => [
+                    'nilai.siswa.all.data',
+                    'nilai.siswa.view',
+                    'nilai.siswa.create',
+                    'nilai.siswa.edit',
+                    'nilai.siswa.delete',
+                ]
+            ],
         ];
 
         // Do same for the admin guard for tutorial purposes.

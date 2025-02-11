@@ -50,6 +50,23 @@
             </a>
         </li>
         @endif
+        @if ($usr->can('catatan.view'))
+        <li class="menu-item mb-2">
+            <a href="{{ route('catatan') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div data-i18n="Mata Pelajaran">Catatan Pelajaran</div>
+            </a>
+        </li>
+        @endif
+        @if ($usr->can('nilai.siswa.view'))
+        <li class="menu-item mb-2">
+            <a href="{{ route('nilai.siswa') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div data-i18n="Nilai Siswa">Nilai Siswa</div>
+            </a>
+        </li>
+        @endif
+     
         @if ($usr->can('kelas.view'))
         <li class="menu-item mb-2">
             <a href="{{ route('kelas') }}" class="menu-link">

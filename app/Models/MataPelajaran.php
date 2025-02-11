@@ -9,19 +9,12 @@ class MataPelajaran extends Model
 {
     use HasFactory;
 
-    /**
-     * Relasi ke model Kelas.
-     * MataPelajaran belongsTo Kelas.
-     */
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'id_kelas');
     }
 
-    /**
-     * Relasi ke model Guru.
-     * MataPelajaran belongsTo Guru.
-     */
+    
     public function guru()
     {
         return $this->belongsTo(Guru::class, 'id_guru');
@@ -30,5 +23,10 @@ class MataPelajaran extends Model
     public function jadwal()
     {
         return $this->hasMany(Jadwal::class, 'id_mapel');
+    }
+
+    public function nilaiSiswa()
+    {
+        return $this->hasMany(MataPelajaran::class, 'id_mapel');
     }
 }
